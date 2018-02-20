@@ -1,6 +1,29 @@
 import React, { Component } from 'react';
+import { BrowserRouter, Route, NavLink } from 'react-router-dom'
 import periodic from 'periodic-table';
 import PElement from './PElement';
+
+const styles = {
+    col: {
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center",
+    },
+    row: {
+        display: "flex",
+        flexDirection: "row",
+        justifyContent: "flex-start",
+        flexWrap: "wrap",
+        alignItems: "center",
+    },
+    navBtn: {
+        border: "solid 1px black",
+        padding: "5px",
+        textDecoration: "none",
+        
+    }
+}
 
 class App extends Component {
     constructor(props){
@@ -13,9 +36,21 @@ class App extends Component {
     
     render(){
         return(
-            <div>
-                {this.state.elements.map( (x, i) => <PElement key={i} {...x}/>)}
-            </div>
+            <BrowserRouter>
+                <div>
+                    <div style={styles.row}> 
+                        {this.state.elements.map( (x, i) => <NavLink style={styles.navBtn} key={i} 
+                                                                     to={`/${x.name}`}>
+                                                                {x.name}
+                                                            </NavLink>)}
+                    </div>
+                    <div style={styles.col}>
+                        {this.state.elements.map( (x, i) => <Route key={i} 
+                                                                   path={`/${x.name}`} 
+                                                                   render={(props) => <PElement key={i} {...x}/>}/>)}
+                    </div>
+                </div>
+            </BrowserRouter>
         );
     }
 }
