@@ -1,12 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import p from 'periodic-table';
+import App from './components/App';
 import registerServiceWorker from './registerServiceWorker';
 
-console.log(p.numbers[1]);
-
 ReactDOM.render(
-    <h1 />, 
+    <App />, 
     document.getElementById('root')
 );
 registerServiceWorker();
