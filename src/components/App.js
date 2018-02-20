@@ -9,6 +9,7 @@ const styles = {
         flexDirection: "column",
         justifyContent: "center",
         alignItems: "center",
+        marginTop: "10px",
     },
     row: {
         display: "flex",
@@ -21,7 +22,7 @@ const styles = {
         border: "solid 1px black",
         padding: "5px",
         textDecoration: "none",
-        
+        fontFamily: "Arial"
     }
 }
 
