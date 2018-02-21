@@ -27,31 +27,28 @@ class NavContainer extends Component {
         }
     }
 
-    forward = () => {
+    handleChange = (event) => {
+        const {value} = event.target;
+        let myVal = value;
+        if(myVal < 0 || myVal > 117 || myVal === ""){
+            myVal = 0;
+        }
         this.setState({
-            index: this.state.index++
-        });
-    }
-
-    backward = () => {
-        this.setState({
-            index: this.state.index--
+            index: myVal
         });
     }
 
     render(){
+        console.log(this.props.elements);
+        const {index} = this.state;
+        const {elements} = this.props;
+        const eleName = elements[index].name;
         return(
-            <div class="row">
-                <button onClick={this.backward}>
-                    back
-                </button>
-                {this.props.elements.filter( (x, i) => ).map( (x, i) => <NavLink style={styles.navBtn} key={i} 
-                                                                     to={`/${x.name}`}>
-                                                                {x.name}
-                                                            </NavLink>)}
-                <button onClick={this.forward}>
-                    forward
-                </button>
+            <div style={styles.row}>
+                <input type="number" value={this.index} onChange={this.handleChange}/>
+                <NavLink style={styles.navBtn} to={`${eleName}`}>
+                    Go to Element
+                </NavLink>
             </div>
         );
     }

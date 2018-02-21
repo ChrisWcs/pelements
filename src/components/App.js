@@ -24,6 +24,12 @@ const styles = {
         padding: "5px",
         textDecoration: "none",
         fontFamily: "Arial"
+    },
+    layout: {
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        
     }
 }
 
