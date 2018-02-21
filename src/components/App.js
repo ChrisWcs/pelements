@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter, Route, NavLink } from 'react-router-dom'
 import periodic from 'periodic-table';
 import PElement from './PElement';
+import NavContainer from './NavContainer';
 
 const styles = {
     col: {
@@ -39,12 +40,7 @@ class App extends Component {
         return(
             <BrowserRouter>
                 <div>
-                    <div style={styles.row}> 
-                        {this.state.elements.map( (x, i) => <NavLink style={styles.navBtn} key={i} 
-                                                                     to={`/${x.name}`}>
-                                                                {x.name}
-                                                            </NavLink>)}
-                    </div>
+                    <NavContainer elements={this.state.elements}/>
                     <div style={styles.col}>
                         {this.state.elements.map( (x, i) => <Route key={i} 
                                                                    path={`/${x.name}`} 
