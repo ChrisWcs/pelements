@@ -29,7 +29,7 @@ const styles = {
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
-        
+
     }
 }
 
@@ -45,13 +45,11 @@ class App extends Component {
     render(){
         return(
             <BrowserRouter>
-                <div>
+                <div style={styles.col}>
                     <NavContainer elements={this.state.elements}/>
-                    <div style={styles.col}>
-                        {this.state.elements.map( (x, i) => <Route key={i} 
-                                                                   path={`/${x.name}`} 
-                                                                   render={(props) => <PElement key={i} {...x}/>}/>)}
-                    </div>
+                    {this.state.elements.map( (x, i) => <Route key={i} 
+                                                               path={`/${x.name}`} 
+                                                               render={(props) => <PElement key={i} {...x}/>}/>)}
                 </div>
             </BrowserRouter>
         );
